@@ -7,7 +7,7 @@ use halo2_proofs::{
     plonk::{self, Circuit, ConstraintSystem, Selector},
     poly::{commitment::ParamsProver, kzg::commitment::ParamsKZG},
 };
-use halo2_wrong_ecc::{
+use ecc::{
     integer::rns::Rns,
     maingate::{
         MainGate, MainGateConfig, MainGateInstructions, RangeChip, RangeConfig, RangeInstructions,
@@ -36,12 +36,12 @@ use std::{fs::File, marker::PhantomData, path::Path, rc::Rc};
 use super::{CircuitExt, PoseidonTranscript, Snark, POSEIDON_SPEC};
 
 pub type Svk = KzgSuccinctVerifyingKey<G1Affine>;
-pub type BaseFieldEccChip = halo2_wrong_ecc::BaseFieldEccChip<G1Affine, LIMBS, BITS>;
+pub type BaseFieldEccChip = ecc::BaseFieldEccChip<G1Affine, LIMBS, BITS>;
 pub type Halo2Loader<'a> = loader::halo2::Halo2Loader<'a, G1Affine, BaseFieldEccChip>;
 
 #[allow(clippy::type_complexity)]
 /// Core function used in `synthesize` to aggregate multiple `snarks`.
-///  
+///
 /// Returns the assigned instances of previous snarks and the new final pair that needs to be verified in a pairing check.
 /// For each previous snark, we concatenate all instances into a single vector. We return a vector of vectors,
 /// one vector per snark, for convenience.

@@ -3,7 +3,7 @@ use halo2_proofs::{
     circuit::{floor_planner::V1, Layouter, Value},
     plonk::{Circuit, ConstraintSystem, Error},
 };
-use halo2_wrong_ecc::{
+use ecc::{
     maingate::{
         MainGate, MainGateConfig, MainGateInstructions, RangeChip, RangeConfig, RangeInstructions,
         RegionCtx,

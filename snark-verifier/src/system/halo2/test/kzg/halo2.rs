@@ -40,7 +40,7 @@ use halo2_proofs::{
     },
     transcript::{Blake2bRead, Blake2bWrite, Challenge255, TranscriptReadBuffer},
 };
-use halo2_wrong_ecc::{
+use ecc::{
     self,
     integer::rns::Rns,
     maingate::{MainGateInstructions, RangeInstructions, RegionCtx},
@@ -54,7 +54,7 @@ const RATE: usize = 4;
 const R_F: usize = 8;
 const R_P: usize = 60;
 
-type BaseFieldEccChip = halo2_wrong_ecc::BaseFieldEccChip<G1Affine, LIMBS, BITS>;
+type BaseFieldEccChip = ecc::BaseFieldEccChip<G1Affine, LIMBS, BITS>;
 type Halo2Loader<'a> = loader::halo2::Halo2Loader<'a, G1Affine, BaseFieldEccChip>;
 type PoseidonTranscript<L, S> =
     system::halo2::transcript::halo2::PoseidonTranscript<G1Affine, L, S, T, RATE, R_F, R_P>;

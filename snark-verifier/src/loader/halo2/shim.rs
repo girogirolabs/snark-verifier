@@ -170,7 +170,7 @@ mod halo2_wrong {
         circuit::{AssignedCell, Cell, Value},
         plonk::Error,
     };
-    use halo2_wrong_ecc::{
+    use ecc::{
         integer::rns::Common,
         maingate::{
             CombinationOption, CombinationOptionCommon, MainGate, MainGateInstructions, RegionCtx,

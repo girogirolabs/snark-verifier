@@ -20,11 +20,11 @@ ark-std = { version = "0.3.0", features = ["print-trace"], optional = true }
 snark-verifier = { path = "../snark-verifier", default-features = false }
 
 # system_halo2
-halo2_proofs = { git = "https://github.com/girogirolabs/halo2", branch = "experiment" } # not optional for now
+halo2_proofs = { path = "../../halo2/halo2_proofs" } # not optional for now
 halo2curves = "0.6.0"
 
 # loader_halo2
-halo2_wrong_ecc = { git = "https://github.com/girogirolabs/halo2wrong", branch = "experiment", package = "ecc", optional = true }
+ecc = { path = "../../halo2wrong/ecc", optional = true }
 poseidon = { git = "https://github.com/privacy-scaling-explorations/poseidon", tag = "v2024_01_31", optional = true }
 
 # loader_evm
@@ -46,7 +46,7 @@ loader_evm = ["snark-verifier/loader_evm", "dep:ethereum-types"]
 loader_halo2 = [
     "snark-verifier/system_halo2",
     "snark-verifier/loader_halo2",
-    "dep:halo2_wrong_ecc",
+    "dep:ecc",
     "dep:poseidon",
 ]
 parallel = ["snark-verifier/parallel"]

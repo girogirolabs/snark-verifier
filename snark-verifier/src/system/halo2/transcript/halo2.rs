@@ -447,7 +447,7 @@ mod halo2_wrong {
     use crate::system::halo2::transcript::halo2::NativeEncoding;
     use halo2_curves::CurveAffine;
     use halo2_proofs::circuit::AssignedCell;
-    use halo2_wrong_ecc::BaseFieldEccChip;
+    use ecc::BaseFieldEccChip;
 
     impl<'a, C: CurveAffine, const LIMBS: usize, const BITS: usize> NativeEncoding<'a, C>
         for BaseFieldEccChip<C, LIMBS, BITS>

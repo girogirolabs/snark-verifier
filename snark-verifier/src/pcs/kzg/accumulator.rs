@@ -215,7 +215,7 @@ mod halo2 {
 
     mod halo2_wrong {
         use super::*;
-        use halo2_wrong_ecc::BaseFieldEccChip;
+        use ecc::BaseFieldEccChip;
 
         impl<'a, C: CurveAffine, const LIMBS: usize, const BITS: usize>
             LimbsEncodingInstructions<'a, C, LIMBS, BITS> for BaseFieldEccChip<C, LIMBS, BITS>

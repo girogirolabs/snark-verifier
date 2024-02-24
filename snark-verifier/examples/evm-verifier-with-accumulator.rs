@@ -170,7 +170,7 @@ mod aggregation {
         plonk::{self, Circuit, ConstraintSystem, Error},
         poly::{commitment::ParamsProver, kzg::commitment::ParamsKZG},
     };
-    use halo2_wrong_ecc::{
+    use ecc::{
         integer::rns::Rns,
         maingate::{
             MainGate, MainGateConfig, MainGateInstructions, RangeChip, RangeConfig,
@@ -198,7 +198,7 @@ mod aggregation {
     const R_P: usize = 60;
 
     type Svk = KzgSuccinctVerifyingKey<G1Affine>;
-    type BaseFieldEccChip = halo2_wrong_ecc::BaseFieldEccChip<G1Affine, LIMBS, BITS>;
+    type BaseFieldEccChip = ecc::BaseFieldEccChip<G1Affine, LIMBS, BITS>;
     type Halo2Loader<'a> = loader::halo2::Halo2Loader<'a, G1Affine, BaseFieldEccChip>;
     pub type PoseidonTranscript<L, S> =
         system::halo2::transcript::halo2::PoseidonTranscript<G1Affine, L, S, T, RATE, R_F, R_P>;
